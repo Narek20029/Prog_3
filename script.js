@@ -5,12 +5,12 @@ function genMatrix(w, h) {
         for (var x = 0; x < w; x++) {
             var r = random(100);
             if (r < 20) r = 0;
-            else if (r < 50) r = 1;
+            else if (r < 60) r = 1;
             else if (r < 70) r = 2;
-            else if (r < 80) r = 3;
-            else if (r < 81) r = 4;
-            else if (r < 90) r = 5;
-            else if (r < 95) r = 6;
+            else if (r < 75) r = 3;
+            else if (r < 76) r = 4;
+            else if (r < 80) r = 5;
+            else if (r < 87) r = 6;
             matrix[y][x] = r;
         }
     }
@@ -73,7 +73,7 @@ function draw() {
             }
             else if (matrix[y][x] == 5) {
                 fill('#543805');
-            }else if (matrix[y][x] == 6) {
+            } else if (matrix[y][x] == 6) {
                 fill("blue");
             }
             rect(x * side, y * side, side, side);
