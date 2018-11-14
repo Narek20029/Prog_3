@@ -36,9 +36,11 @@ class Xotaker extends base {
     }
 
     sharjvel() {
+        if(Dmer == false){
+            this.energy--;
+        }
         var vand = random(this.yntrelVandak(0, 6));
-        this.energy--;
-
+      
         if (vand && this.multiply >= this.speed / 4) {
             if (matrix[vand[1]][vand[0]] == 6) {
                 this.drown();
@@ -53,6 +55,7 @@ class Xotaker extends base {
             if (this.energy <= -(this.speed / 2)) this.mahanal();
         }
     }
+    
 
     utel() {
         this.multiply++;

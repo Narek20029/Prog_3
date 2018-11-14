@@ -1,9 +1,9 @@
 class dinozavr extends base {
     constructor(x, y, index) {
         super(x, y, index);
-        this.energy = Math.round(Math.random() * 5);
-        this.speed = 10;
-        this.multiply = 6;
+        this.energy =  7;
+        this.speed = 14;
+        this.multiply = 7;
 
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -60,6 +60,8 @@ class dinozavr extends base {
         ];
     }
     sharjvel() {
+
+        if(Dmer == false){
         this.energy--;
         var vand = random(this.yntrelVandak(0, 6));
         if (vand && this.multiply >= this.speed / 2) {
@@ -69,8 +71,12 @@ class dinozavr extends base {
             matrix[this.y][this.x] = 4;
         }
     }
+    }
     utel() {
-        this.energy--;
+        if (Dmer == false) {
+            this.energy--;
+            }
+        
         var vand = random(this.yntrelVandak(3, 2));
 
         if (vand && this.multiply >= this.speed / 2) {
@@ -106,7 +112,7 @@ class dinozavr extends base {
     }
 
     mahanal() {
-        if (this.energy <= -(this.speed / 2)) {
+        if (this.energy <= this.speed / 2) {
             matrix[this.y][this.x] = 0;
             for (var i in dinoArr) {
                 if (dinoArr[i].x == this.x && dinoArr[i].y == this.y) {

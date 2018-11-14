@@ -1,3 +1,4 @@
+
 class jur extends base {
 
 
@@ -15,6 +16,7 @@ class jur extends base {
         ];
     }
     yntrelVandak(ch) {
+        if(Dmer == false){
         this.tarmacnel();
         var found = [];
         for (var i in this.directions) {
@@ -28,17 +30,22 @@ class jur extends base {
         }
         return found;
     }
+    }
 
     mul() {
-        this.multiply++;
-        this.direction = random(this.yntrelVandak(0));
-        if (this.multiply >= this.speed && this.direction) {
-            var newjur = new jur(this.direction[0], this.direction[1], this.index);
-            newjur.parentX = this.x;
-            newjur.parentY = this.y;
-            jurArr.push(newjur);
-            matrix[this.direction[1]][this.direction[0]] = this.index;
-            this.multiply = 0;
+        if (Dmer == false) {
+            this.multiply++;
+            this.direction = random(this.yntrelVandak(0));
+            if (this.multiply >= this.speed && this.direction) {
+                var newjur = new jur(this.direction[0], this.direction[1], this.index);
+                newjur.parentX = this.x;
+                newjur.parentY = this.y;
+                jurArr.push(newjur);
+                matrix[this.direction[1]][this.direction[0]] = this.index;
+                this.multiply = 0;
+            }
         }
     }
 }
+
+

@@ -16,14 +16,16 @@ function genMatrix(w, h) {
     }
     return matrix;
 }
-
+var Dmer = false;
+var frame = 0;
 var matrix;
-var w = 30;
+var w = 60;
 var h = 30;
-var side = 24;
+var side = 20;
 var grassArr = [], xotakerArr = [], gishatichArr = [], dinoArr = [], patArr = [], jurArr = [];
 
 function setup() {
+    document.body.style.backgroundColor = "green";
     matrix = genMatrix(w, h);
     createCanvas(side * w + 1, side * h + 1);
     background("#acacac");
@@ -50,9 +52,11 @@ function setup() {
             }
         }
     }
+  
 }
 
 function draw() {
+    frame +=1;
     background("#acacac");
     for (var y in matrix) {
         for (var x in matrix[y]) {
@@ -74,10 +78,25 @@ function draw() {
             else if (matrix[y][x] == 5) {
                 fill('#543805');
             } else if (matrix[y][x] == 6) {
+                if(Dmer == false){
                 fill("blue");
+                }
+                else{
+                    fill('#ccffff');
+                }
             }
             rect(x * side, y * side, side, side);
         }
+    }
+    console.log(Dmer);
+
+    if(frame%20 <= 0){
+        document.body.style.backgroundColor = "white";
+        Dmer = true;
+    }
+    if(frame%30 <= 0){
+        document.body.style.backgroundColor = "green";
+        Dmer = false;
     }
 
     for (var i in grassArr) {

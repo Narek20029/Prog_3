@@ -1,5 +1,8 @@
 class Grass extends base {
-
+    constructor(x, y, index) {
+        super(x, y, index);
+        this.speed = 2;
+    }
     yntrelVandak(ch) {
         var found = [];
         for (var i in this.directions) {
@@ -15,7 +18,10 @@ class Grass extends base {
     }
 
     mul() {
+        if (Dmer == false) {
         this.multiply++;
+        }
+
         this.direction = random(this.yntrelVandak(0));
         if (this.multiply >= this.speed && this.direction) {
             var newGrass = new Grass(this.direction[0], this.direction[1], this.index);
