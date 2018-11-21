@@ -22,11 +22,14 @@ var matrix;
 var w = 60;
 var h = 30;
 var side = 20;
-var grassArr = [], xotakerArr = [], gishatichArr = [], miteorArr = [], dinoArr = [], patArr = [], jurArr = [];
+var grassArr = [], xotakerArr = [], gishatichArr = [], miteorArr = [], dinoArr = [], patArr = [], jurArr = [], stexcoxArr = [];
 var boomX;
 var boomY;
 
 function setup() {
+    stexcoxArr.push(new stexcox(10));
+    frameboom = frame + Math.round(Math.random()* 10);
+    new stexcox(10);
     document.body.style.backgroundColor = "green";
     matrix = genMatrix(w, h);
     createCanvas(side * w + 1, side * h + 1);
@@ -38,13 +41,13 @@ function setup() {
                 grassArr.push(new Grass(x * 1, y * 1, 1));
             }
             else if (matrix[y][x] == 2) {
-                xotakerArr.push(new Xotaker(x * 1, y * 1, 2));
+                xotakerArr.push(new Xotaker(x * 1, y * 1, 2,Math.round(Math.random()*2)));
             }
             else if (matrix[y][x] == 3) {
-                gishatichArr.push(new Gishatich(x * 1, y * 1, 3))
+                gishatichArr.push(new Gishatich(x * 1, y * 1, 3,Math.round(Math.random()*2)))
             }
             else if (matrix[y][x] == 4) {
-                dinoArr.push(new dinozavr(x * 1, y * 1, 4))
+                dinoArr.push(new dinozavr(x * 1, y * 1, 4,Math.round(Math.random()*2)))
             }
             else if (matrix[y][x] == 6) {
                 jurArr.push(new jur(x * 1, y * 1, 6))
@@ -59,20 +62,24 @@ function setup() {
 }
 
 function draw() {
+    umStexcel = Math.round(Math.random() * 4);
+            
+    makeX = Math.round(Math.random() * h);
+    makeY = Math.round(Math.random() * w);
     frame += 1;
     boomY = Math.round(Math.random() * h);
     boomX = Math.round(Math.random() * w);
-    if (frame < 10) {
+    
+    if (frameboom < frame) {
         for (var y in matrix) {
             for (var x in matrix[y]) {
                 if (boomY == y) {
                     if (boomX == x) {
                       
                          miteorArr.push(new miteor(x * 1, y * 1, 8));
-                        
                        
                         
-
+                         frameboom = frame + Math.round(Math.random()* 10);
                     }
                 }
             }
@@ -151,6 +158,11 @@ function draw() {
     }
     for(var i in miteorArr){
         miteorArr[i].boom();
+
+    }
+    for(var i in stexcoxArr){
+        stexcoxArr[i].stexcel();
+
     }
 
 

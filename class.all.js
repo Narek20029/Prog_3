@@ -1,5 +1,6 @@
 class base {
-    constructor(x, y, index) {
+    constructor(x, y, index, ser) {
+        this.ser = ser;
         this.x = x;
         this.y = y;
         this.index = index;

@@ -6,14 +6,14 @@ class Gishatich extends base {
         this.multiply = 13;
 
     }
-    yntrelVandak(ch) {
+    yntrelVandak(ch , ls) {
         this.stanalNorKordinatner();
         var found = [];
         for (var i in this.directions) {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == ch) {
+                if (matrix[y][x] == ch || matrix[y][x] == ls) {
                     found.push(this.directions[i]);
                 }
             }
@@ -34,7 +34,7 @@ class Gishatich extends base {
     }
 
     sharjvel() {
-        var vand = random(this.yntrelVandak(0));
+        var vand = random(this.yntrelVandak(0 , 1));
         if (vand && this.multiply >= this.speed / 2) {
             this.energy--;
             matrix[this.y][this.x] = 0;
@@ -61,12 +61,16 @@ class Gishatich extends base {
     }
 
     bazmanal() {
-        var vand = random(this.yntrelVandak(0));
+        var txa = random(this.yntrelVandak(3));
+        if(this.ser == 1 && txa.ser == 2){
+
+        var vand = random(this.yntrelVandak());
         if (vand && this.energy >= this.speed) {
             this.energy = 1;
-            var newgishatich = new Gishatich(vand[0], vand[1], 3);
+            var newgishatich = new Gishatich(vand[0], vand[1], 3,Math.round(Math.random()*2));
             gishatichArr.push(newgishatich);
         }
+    }
     }
 
     mahanal() {

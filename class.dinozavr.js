@@ -103,12 +103,15 @@ class dinozavr extends base {
         else this.sharjvel();
     }
     bazmanal() {
-        var vand = random(this.yntrelVandak(0));
+        var txa = random(this.yntrelVandak(4));
+        if(this.ser == 1 && txa.ser == 2){
+        var vand = random(this.yntrelVandak());
         if (vand && this.energy >= this.speed) {
             this.energy = 1;
-            var newdinozavr = new dinozavr(vand[0], vand[1], 4);
+            var newdinozavr = new dinozavr(vand[0], vand[1], 4,Math.round(Math.random()*2));
             dinoArr.push(newdinozavr);
         }
+    }
     }
 
     mahanal() {

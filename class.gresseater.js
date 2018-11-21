@@ -76,12 +76,15 @@ class Xotaker extends base {
     }
 
     bazmanal() {
-        var vand = random(this.yntrelVandak(0));
+        var txa = random(this.yntrelVandak(2));
+        if(this.ser == 1 && txa.ser == 2){
+        var vand = random(this.yntrelVandak());
         if (vand && this.energy >= this.speed) {
             this.energy = 1;
-            var newxotaker = new Xotaker(vand[0], vand[1], 2);
+            var newxotaker = new Xotaker(vand[0], vand[1], 2,Math.round(Math.random()*2));
             xotakerArr.push(newxotaker);
         }
+    }
     }
 
     drown() {
