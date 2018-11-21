@@ -1,7 +1,7 @@
 class dinozavr extends base {
-    constructor(x, y, index) {
-        super(x, y, index);
-        this.energy =  7;
+    constructor(x, y, index,ser) {
+        super(x, y, index, ser);
+        this.energy = 7;
         this.speed = 14;
         this.multiply = 7;
 
@@ -61,22 +61,22 @@ class dinozavr extends base {
     }
     sharjvel() {
 
-        if(Dmer == false){
-        this.energy--;
-        var vand = random(this.yntrelVandak(0, 6));
-        if (vand && this.multiply >= this.speed / 2) {
+        if (Dmer == false) {
             this.energy--;
-            matrix[this.y][this.x] = 0;
-            this.x = vand[0]; this.y = vand[1];
-            matrix[this.y][this.x] = 4;
+            var vand = random(this.yntrelVandak(0, 6));
+            if (vand && this.multiply >= this.speed / 2) {
+                this.energy--;
+                matrix[this.y][this.x] = 0;
+                this.x = vand[0]; this.y = vand[1];
+                matrix[this.y][this.x] = 4;
+            }
         }
-    }
     }
     utel() {
         if (Dmer == false) {
             this.energy--;
-            }
-        
+        }
+
         var vand = random(this.yntrelVandak(3, 2));
 
         if (vand && this.multiply >= this.speed / 2) {
@@ -103,15 +103,23 @@ class dinozavr extends base {
         else this.sharjvel();
     }
     bazmanal() {
-        var txa = random(this.yntrelVandak(4));
-        if(this.ser == 1 && txa.ser == 2){
-        var vand = random(this.yntrelVandak());
-        if (vand && this.energy >= this.speed) {
-            this.energy = 1;
-            var newdinozavr = new dinozavr(vand[0], vand[1], 4,Math.round(Math.random()*2));
-            dinoArr.push(newdinozavr);
+
+        for (var l in this.directions) {
+            var x = this.directions[l][0];
+            var y = this.directions[l][1];
+            for (var i in gishatichArr) {
+                if (gishatichArr[i].y == y && gishatichArr[i].x == x && gishatichArr[i].ser == 1) {
+                    if (this.ser == 0) {
+                        var vand = random(this.yntrelVandak(0,1));
+                        if (vand && this.energy >= this.speed) {
+                            this.energy = 1;
+                            var newdinozavr = new dinozavr(vand[0], vand[1], 4, Math.round(Math.random() * 1));
+                            dinoArr.push(newdinozavr);
+                        }
+                    }
+                }
+            }
         }
-    }
     }
 
     mahanal() {

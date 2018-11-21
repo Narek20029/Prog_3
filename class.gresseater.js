@@ -1,6 +1,6 @@
 class Xotaker extends base {
-    constructor(x, y, index) {
-        super(x, y, index);
+    constructor(x, y, index, ser) {
+        super(x, y, index, ser);
         this.energy = Math.round(Math.random() * 6);
         this.multiply = Math.round(Math.random() * 4);
 
@@ -76,15 +76,29 @@ class Xotaker extends base {
     }
 
     bazmanal() {
-        var txa = random(this.yntrelVandak(2));
-        if(this.ser == 1 && txa.ser == 2){
-        var vand = random(this.yntrelVandak());
-        if (vand && this.energy >= this.speed) {
-            this.energy = 1;
-            var newxotaker = new Xotaker(vand[0], vand[1], 2,Math.round(Math.random()*2));
-            xotakerArr.push(newxotaker);
+
+        for(var l in this.directions){
+        var x = this.directions[l][0];
+        var y = this.directions[l][1];
+        for(var i in xotakerArr){
+            if(xotakerArr[i].y == y && xotakerArr[i].x == x && xotakerArr[i].ser == 1){
+                if(this.ser == 0){
+
+                    var vand = random(this.yntrelVandak(1));
+                    if (vand && this.energy >= this.speed) {
+                        this.energy = 1;
+                        var newxotaker = new Xotaker(vand[0], vand[1], 2,Math.round(Math.random()*1));
+                        xotakerArr.push(newxotaker);
+                        
+                    
+                    }
+                }
+            }
+
         }
     }
+
+       
     }
 
     drown() {

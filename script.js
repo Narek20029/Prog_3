@@ -41,13 +41,13 @@ function setup() {
                 grassArr.push(new Grass(x * 1, y * 1, 1));
             }
             else if (matrix[y][x] == 2) {
-                xotakerArr.push(new Xotaker(x * 1, y * 1, 2,Math.round(Math.random()*2)));
+                xotakerArr.push(new Xotaker(x * 1, y * 1, 2,Math.round(Math.random()*1)));
             }
             else if (matrix[y][x] == 3) {
-                gishatichArr.push(new Gishatich(x * 1, y * 1, 3,Math.round(Math.random()*2)))
+                gishatichArr.push(new Gishatich(x * 1, y * 1, 3,Math.round(Math.random()*1)))
             }
             else if (matrix[y][x] == 4) {
-                dinoArr.push(new dinozavr(x * 1, y * 1, 4,Math.round(Math.random()*2)))
+                dinoArr.push(new dinozavr(x * 1, y * 1, 4,Math.round(Math.random()*1)))
             }
             else if (matrix[y][x] == 6) {
                 jurArr.push(new jur(x * 1, y * 1, 6))
