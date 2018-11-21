@@ -22,7 +22,9 @@ var matrix;
 var w = 60;
 var h = 30;
 var side = 20;
-var grassArr = [], xotakerArr = [], gishatichArr = [], dinoArr = [], patArr = [], jurArr = [];
+var grassArr = [], xotakerArr = [], gishatichArr = [], miteorArr = [], dinoArr = [], patArr = [], jurArr = [];
+var boomX;
+var boomY;
 
 function setup() {
     document.body.style.backgroundColor = "green";
@@ -50,13 +52,32 @@ function setup() {
             else if (matrix[y][x] == 5) {
                 patArr.push(new pat())
             }
+
         }
     }
-  
+
 }
 
 function draw() {
-    frame +=1;
+    frame += 1;
+    boomY = Math.round(Math.random() * h);
+    boomX = Math.round(Math.random() * w);
+    if (frame < 10) {
+        for (var y in matrix) {
+            for (var x in matrix[y]) {
+                if (boomY == y) {
+                    if (boomX == x) {
+                      
+                         miteorArr.push(new miteor(x * 1, y * 1, 8));
+                        
+                       
+                        
+
+                    }
+                }
+            }
+        }
+    }
     background("#acacac");
     for (var y in matrix) {
         for (var x in matrix[y]) {
@@ -64,7 +85,12 @@ function draw() {
                 fill("#acacac");
             }
             else if (matrix[y][x] == 1) {
-                fill("green");
+                if (Dmer == false) {
+                    fill("green");
+                }
+                else {
+                    fill('#99ff99');
+                }
             }
             else if (matrix[y][x] == 2) {
                 fill("yellow");
@@ -78,23 +104,24 @@ function draw() {
             else if (matrix[y][x] == 5) {
                 fill('#543805');
             } else if (matrix[y][x] == 6) {
-                if(Dmer == false){
-                fill("blue");
+                if (Dmer == false) {
+                    fill("blue");
                 }
-                else{
+                else {
                     fill('#ccffff');
                 }
             }
+
             rect(x * side, y * side, side, side);
         }
     }
-    console.log(Dmer);
 
-    if(frame%20 <= 0){
+
+    if (frame % 20 <= 0) {
         document.body.style.backgroundColor = "white";
         Dmer = true;
     }
-    if(frame%30 <= 0){
+    if (frame % 30 <= 0) {
         document.body.style.backgroundColor = "green";
         Dmer = false;
     }
@@ -121,6 +148,9 @@ function draw() {
         dinoArr[i].bazmanal();
         dinoArr[i].utel();
         dinoArr[i].mahanal();
+    }
+    for(var i in miteorArr){
+        miteorArr[i].boom();
     }
 
 
