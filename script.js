@@ -25,8 +25,21 @@ var side = 20;
 var grassArr = [], xotakerArr = [], gishatichArr = [], miteorArr = [], dinoArr = [], patArr = [], jurArr = [], stexcoxArr = [];
 var boomX;
 var boomY;
+var xotakerP;
+var gishatichP;
+var dinozavP;
+var exanakP;
+
+var dmer;
 
 function setup() {
+    
+    xotakerP = document.getElementById("xotaker");
+    gishatichP = document.getElementById("gishatich");
+    dinozavrP = document.getElementById("dinozavr");
+    exanakP = document.getElementById("exanak");
+
+
     stexcoxArr.push(new stexcox(10));
     frameboom = frame + Math.round(Math.random()* 10);
     new stexcox(10);
@@ -85,6 +98,19 @@ function draw() {
             }
         }
     }
+    if(Dmer){
+        dmer = "dmer";
+    }
+    else{
+        dmer = "garun";
+    }
+
+        xotakerP.innerText="xotakerneri qanaky " + xotakerArr.length;
+        gishatichP.innerText="gishatichneri qanaky " + gishatichArr.length;
+        dinozavrP.innerText="dinozavrneri qanaky " + dinoArr.length;
+        exanakP.innerText="exanak " + dmer;
+
+
     background("#acacac");
     for (var y in matrix) {
         for (var x in matrix[y]) {
